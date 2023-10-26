@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:dating_template/personalize/ui/theme.dart';
 import 'package:dating_template/route.dart';
 import 'package:dating_template/service/token.dart';
+import 'package:dating_template/utils/overried_http_overrides.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -9,6 +12,8 @@ import 'package:get/get.dart';
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  /// 解决image.netWork异常问题 主要时cert问题
+  HttpOverrides.global = OverrideHttpOverrides();
   Get.put(TokenController());
   runApp(const MyApp());
 }
