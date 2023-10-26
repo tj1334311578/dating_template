@@ -1,3 +1,4 @@
+import 'package:dating_template/pages/home/publish/index.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -47,6 +48,7 @@ class _HomeState extends State<Home> {
         children: const [
           PageViewIndex(),
           PageViewCommunity(),
+          Publish(),
           PageViewMessage(),
           PageViewMine(),
         ],
@@ -54,8 +56,11 @@ class _HomeState extends State<Home> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: WTheme.primary,
         onPressed: () {
-          Get.toNamed('/publish');
-
+          // Get.toNamed('/publish');
+          setState(() {
+            curPage = 2;
+            _pageController.jumpToPage(curPage);
+          });
         },
         child: const Icon(
           Icons.add,
@@ -66,7 +71,7 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         child: Padding(
-          padding: const EdgeInsets.only(top: 8,left: 12,right: 12),
+          padding: const EdgeInsets.only(top: 8, left: 12, right: 12),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -75,8 +80,8 @@ class _HomeState extends State<Home> {
               const SizedBox(
                 width: 48,
               ),
-              barItem(curPage == 2, 2, icon: Icons.message_sharp, text: "消息"),
-              barItem(curPage == 3, 3, icon: Icons.person, text: "我的"),
+              barItem(curPage == 3, 3, icon: Icons.message_sharp, text: "消息"),
+              barItem(curPage == 4, 4, icon: Icons.person, text: "我的"),
             ],
           ),
         ),

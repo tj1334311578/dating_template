@@ -83,6 +83,7 @@ class _MyAppState extends State<MyApp> {
           inactiveTickMarkColor: WTheme.primary,
         ),
       ),
+      debugShowCheckedModeBanner: false,
       getPages: getRoutes,
       initialRoute: '/home',
       builder: EasyLoading.init(),
